@@ -1,4 +1,4 @@
-import goober
+#import goober
 
-print("hello world")
-goober.do_goober (1,2)
+#print("hello world")
+#goober.do_goober (1,2)
