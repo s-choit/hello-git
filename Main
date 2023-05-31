@@ -1,2 +1,18 @@
-print("Hello World")
-print("I love Twice!")
+#print("Hello World")
+#print("I love Twice!")
+
+import pickle
+board = [[''for _ in range (3)] for _ in range(3)]
+def print_board(board):
+    for row in board:
+        row_str=""
+        for cell in row:
+            row_str += cell + "I"
+            print(row_str[:-1])
+            print("-"*5)
+
+def is_board_full(board):
+    for row in board:
+        if " " in row:
+            return False
+    return True
