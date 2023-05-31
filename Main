@@ -16,7 +16,6 @@ def is_board_full(board):
         if " " in row:
             return False
     return True
-
 def is_winner(board, mark):
     for row in board:
         if row.count(mark) == 3:
@@ -32,3 +31,18 @@ def is_winner(board, mark):
         return True
     
     return False
+def save_game(board):
+    with open("tic_tac_toe.pkl", "wb") as file: 
+        pickle.dump(board, file)
+
+def save_scores(wins, losses):
+    scores = (wins, losses)
+    with open("score.pkl", "wb") as file:
+        pickle.dump(scores, file)
+def load_game():
+    try:
+        with open("tic_tac_toe.pkl","rb") as file:
+            return pickle.load(file)
+    except FileNotFoundError:
+        return None
+    
