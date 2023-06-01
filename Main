@@ -1,6 +1,3 @@
-#print("Hello World")
-#print("I love Twice!")
-
 import pickle
 board = [[''for _ in range (3)] for _ in range(3)]
 def print_board(board):
