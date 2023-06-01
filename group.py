@@ -62,7 +62,7 @@ def is_winner (board, mark):
     for row in board:
         if row.count(mark) == 3:
             return True
-    for col in range(3);
+    for col in range(3):
         if board[0][col] == board[1][col] == board[2][col] == mark:
             return True
     if board[0][0] == board[1][1] == board[2][2] == mark:
@@ -70,3 +70,4 @@ def is_winner (board, mark):
     if board[0][2] == board[1][1] == board [2][0] == mark:
         return True
     return False
+
