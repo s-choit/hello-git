@@ -45,28 +45,3 @@
 #            return pickle.load(file)
 #    except FileNotFoundError:
 #        return None
-
-import json
-def print_board(board):
-    for row in board:
-        for cell in row:
-            print(cell, end = " I ")
-        print('\n' + "-" *9)
-
-def is_board_full(board):
-    for row in board:
-        if ' ' in row:
-            return False
-        return True
-def is_winner (board, mark):
-    for row in board:
-        if row.count(mark) == 3:
-            return True
-    for col in range(3);
-        if board[0][col] == board[1][col] == board[2][col] == mark:
-            return True
-    if board[0][0] == board[1][1] == board[2][2] == mark:
-        return True
-    if board[0][2] == board[1][1] == board [2][0] == mark:
-        return True
-    return False
