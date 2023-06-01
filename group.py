@@ -36,9 +36,9 @@
 #        pickle.dump(board, file)
 
 #def save_scores(wins, losses):
-    scores = (wins, losses)
-    with open("score.pkl", "wb") as file:
-        pickle.dump(scores, file)
+#    scores = (wins, losses)
+#    with open("score.pkl", "wb") as file:
+#        pickle.dump(scores, file)
 #def load_game():
 #    try:
 #        with open("tic_tac_toe.pkl","rb") as file:
