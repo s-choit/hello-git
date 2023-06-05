@@ -91,3 +91,18 @@ def play_game():
             else:
                 masked_word += "_"
         print(masked_word)
+
+        guess = input("Guess a letter:").lower()
+
+        if guess.isalpha() and len(guess) == 1:
+            if guess in guessed_letters:
+                print("You already guessed that letter. Try again.")
+            else:
+                guessed_letters.append(guess)
+                if guess in word:
+                    print("Correct guess!")
+                else:
+                    attempts_left -= 1
+                    print("Wrong guess!")
+        else:
+            print("Invalid input. Please enter a simple letter.")
