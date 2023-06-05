@@ -121,3 +121,18 @@ def play_game():
         if choice.lower() =="yes":
             save_game(word, guessed_letters, attempts_left)
             break
+
+if __name__ == "main":
+    saved_game = load_game()
+    if saved_game:
+        word = saved_game["word"]
+        guessed_letters = saved_game["guessed_letters"]
+        attempts_left = saved_game["attempts_left"]
+        print ("Loaded saved game")
+    else:
+        word = get_word()
+        guessed_letters = []
+        attempts_left = 6
+        print("Starting a new game")
+    
+    play_game()
