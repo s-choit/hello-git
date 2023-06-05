@@ -16,7 +16,7 @@ def load_game():
         with open("Hangman_game.pkl", "rb") as file:
             return pickle.load(file)
     except FileNotFoundError:
-        return None 
+        return None
 
 def get_word():
     word_list = ["apple", "banana", "cat", "dog", "elephant", "fish", "giraffe", "horse", "iguana", "jellyfish"]
@@ -122,17 +122,17 @@ def play_game():
             save_game(word, guessed_letters, attempts_left)
             break
 
-    if __name__ == "main":
-        saved_game = load_game()
-        if saved_game:
-            word = saved_game["word"]
-            guessed_letters = saved_game["guessed_letters"]
-            attempts_left = saved_game["attempts_left"]
-            print ("Loaded saved game")
-        else:
-            word = get_word()
-            guessed_letters = []
-            attempts_left = 6
-            print("Starting a new game")
-        
-        play_game()
+
+saved_game = load_game()
+if saved_game:
+    word = saved_game["word"]
+    guessed_letters = saved_game["guessed_letters"]
+    attempts_left = saved_game["attempts_left"]
+    print ("Loaded saved game")
+else:
+    word = get_word()
+    guessed_letters = []
+    attempts_left = 6
+    print("Starting a new game")
+
+play_game()
