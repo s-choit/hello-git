@@ -106,3 +106,18 @@ def play_game():
                     print("Wrong guess!")
         else:
             print("Invalid input. Please enter a simple letter.")
+        
+        if attempts_left ==0:
+            print_hangman(attempts_left)
+            print("You lost! The word was:", word)
+            break
+    
+            
+        if all(letter in guessed_letters for letter in word):
+            print("Congrats! You won!")
+            break
+        
+        choice = input("Do you want to save and quit? (yes or no):")
+        if choice.lower() =="yes":
+            save_game(word, guessed_letters, attempts_left)
+            break
