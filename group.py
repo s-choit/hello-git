@@ -80,6 +80,8 @@ def play_game():
     word = get_word()
     guessed_letters = []
     attempts_left = 6
+    score = load_score()
+    print ("Stats: wins: ", score[0], "losses: ", score[1])
 
     while True:
         print_hangman(attempts_left)
@@ -110,29 +112,79 @@ def play_game():
         if attempts_left ==0:
             print_hangman(attempts_left)
             print("You lost! The word was:", word)
+            score[1] += 1
+            save_score(score)
             break
-    
             
         if all(letter in guessed_letters for letter in word):
             print("Congrats! You won!")
+            score[0] += 1
+            save_score(score)
             break
         
-        choice = input("Do you want to save and quit? (yes or no):")
-        if choice.lower() =="yes":
-            save_game(word, guessed_letters, attempts_left)
-            break
+    print("Final score: wins: ", score[0], "losses: ", score[1])
 
 
-saved_game = load_game()
-if saved_game:
-    word = saved_game["word"]
-    guessed_letters = saved_game["guessed_letters"]
-    attempts_left = saved_game["attempts_left"]
-    print ("Loaded saved game")
-else:
+
+
+
+#saved_game = load_game()
+#if saved_game:
+#    word = saved_game["word"]
+#    guessed_letters = saved_game["guessed_letters"]
+#    attempts_left = saved_game["attempts_left"]
+#    print(attempts_left)
+#    print ("Loaded saved game")
+#else:
+#    word = get_word()
+#    guessed_letters = []
+#    attempts_left = 6
+#    print("Starting a new game")
+
+def save_score(score):
+    with open("hangman_score.pkl", "wb") as file:
+        pickle.dump(score, file)
+    print("Score saved successfully!")
+
+def load_score():
+    try:
+        with open("hangman_score.pkl", "rb") as file:
+            return pickle.load(file)
+    except FileNotFoundError:
+        return [0,0]
+
+def score_win (score):
+    score[0]+=1
+
+def score_loss(score):
+    score[1]+=1
+
+def update_score(score):
+    print(score)
+
+"""
+def play_game():
     word = get_word()
     guessed_letters = []
     attempts_left = 6
-    print("Starting a new game")
+    score = [0, 0]  # wins and losses
+    while True:
+        if attempts_left ==0:
+            score_loss(score)
+            break
+        if all(letter in guessed_letters for letter in word):
+            update_score(score,1)
+            break
+        choice = input("Do you want to save and quit? (y/n): ")
+        if choice.lower() == "y":
+            save_game(word, guessed_letters, attempts_left)
+            break
+"""
 
-play_game()
+if __name__ == "__main__":
+    play_game()
+    
+
+ 
+
+#        save_game(board)
