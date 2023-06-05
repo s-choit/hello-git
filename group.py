@@ -5,7 +5,7 @@ def save_game(word, guessed_letters, attempts_left):
     game_data = {
         "word": word, 
         "guessed_letters": guessed_letters,
-        "attemps_left": attempts_left
+        "attempts_left": attempts_left
     }
     with open("hangman_game.pkl", "wb") as file:
         pickle.dump(game_data, file)
