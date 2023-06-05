@@ -24,5 +24,70 @@ def get_word():
 
 def print_hangman(attempts_left):
     hangman =[
-
+        """
+            +---+
+                |
+                |
+                |
+               ===
+        """,
+        """
+            +---+
+            O   |
+                |
+                |
+               ===
+        """,
+        """
+            +---+
+            O   |
+            |   |
+                |
+               ===
+        """,
+        """
+            +---+
+            O   |
+           /|   |
+                |
+               ===
+        """,
+        """
+            +---+
+            O   |
+           /|\\ |
+                |
+               ===
+        """,
+        """
+            +---+
+            O   |
+           /|\\ |
+           /    |
+               ===
+        """,
+        """
+            +---+
+            O   |
+           /|\\ |
+           / \\ |
+               ===
+        """
     ]
+    print(hangman[6 - attempts_left])
+
+def play_game():
+    word = get_word()
+    guessed_letters = []
+    attempts_left = 6
+
+    while True:
+        print_hangman(attempts_left)
+
+        masked_word = ""
+        for letter in word:
+            if letter in guessed_letters:
+                masked_word += letter
+            else:
+                masked_word += "_"
+        print(masked_word)
